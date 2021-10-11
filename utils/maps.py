@@ -27,8 +27,8 @@ def load_data():
     Returns:
         df: A Pandas.DataFrame containing all stored data
     """
-    github = Github(config["github"])
-    repository = github.get_user().get_repo(config["repo"])
+    github = Github(config["TOKEN"])
+    repository = github.get_user().get_repo(config["REPO"])
     file = repository.get_contents('places.csv')
     return pd.read_csv(StringIO(file.decoded_content.decode()))
 
@@ -39,8 +39,8 @@ def save_data(dataset):
     Args:
         dataset: required, Pandas.DataFrame with locations
     """
-    github = Github(config["github"])
-    repository = github.get_user().get_repo(config["repo"])
+    github = Github(config["TOKEN"])
+    repository = github.get_user().get_repo(config["REPO"])
 
     # file info
     filename = 'places.csv'
