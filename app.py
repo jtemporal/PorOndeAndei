@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask_cors import cross_origin
 
+from utils.decorators import requires_auth
 from utils.maps import create_map, create_new_place
 
 
@@ -17,6 +19,8 @@ def oops():
 
 
 @app.get('/ping')
+@cross_origin(allow_headers=["Content-Type", "Authorization"])
+@requires_auth
 def update_map():
     created = create_map()
     if created:
@@ -25,6 +29,8 @@ def update_map():
 
 
 @app.post('/places')
+@cross_origin(allow_headers=["Content-Type", "Authorization"])
+@requires_auth
 def new_place():
     place_data = request.json
     create_new_place(place_data)
