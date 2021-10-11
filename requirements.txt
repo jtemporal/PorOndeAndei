@@ -1,0 +1,8 @@
+Flask==2.0.0
+Flask-Cors==3.0.10
+folium==0.12.1
+pandas==1.2.5
+pycodestyle==2.7.0
+PyGithub==1.55
+python-jose==3.3.0
+gunicorn==20.1.0
